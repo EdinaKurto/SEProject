@@ -1,0 +1,118 @@
+<section style="background: linear-gradient(135deg, #47524d, #3b4943);">
+<div class="container py-4" >
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0" style="color: #e7e2dd;">My Wishlist</h2>
+            </div>
+            <hr class="my-3">
+        </div>
+    </div>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <!-- Left card -->
+    <div class="col-md-6 mb-3">
+        <div class="card h-100" style="background: linear-gradient(135deg, #27312d, #1f2924)
+ !important;  border: 1px solid #53342A;">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #d6cec4;">Total Value </h5>
+                <h3 class="card-text" style="color: #ad9b82;">
+                  $<span id="wishlist-total-value">0</span>
+                </h3>
+                <small style="color: #d6cec4;">
+                  <span id="wishlist-total-count">0</span> items in wishlist
+                </small>
+              </div>\
+        </div>
+    </div>
+
+    <!-- Quick Actions Card -->
+    <div class="col-md-6 mb-3">
+        <div class="card h-100" style="background: linear-gradient(135deg, #27312d, #1f2924)
+ !important;  border: 1px solid #53342A;">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #d6cec4;">Quick Actions</h5>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-sm btn-success flex-grow-1" style="background-color: #4F625A; border-color: #4F625A;">
+                        Add All to Cart
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger flex-grow-1" id="clearWishlistBtn">
+                        Clear Wishlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <!-- Filter and Sort -->
+<!--     <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm" style=" border: 1px solid #53342A;">
+                <div class="card-body" style="background: linear-gradient(135deg, #53342A, #3E241B); ">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <div class="input-group">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Search in wishlist..."
+                                  style="background-color: #d6cec4; outline: none; box-shadow: none; border-color: #4F625A;" />
+                              
+                                <button
+                                  class="btn btn-outline-secondary"
+                                  type="button"
+                                  style="background-color: #d6cec4; outline: none; box-shadow: none; border-color: #4F625A;">
+                                  Search
+                                </button>
+                              </div>
+                              
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-md-end">
+                                <select class="form-select w-auto" style="background-color: #d6cec4; outline: none; box-shadow: none; border-color: #4F625A;">
+                                    <option selected>Sort by</option>
+                                    <option>Price: Low to High</option>
+                                    <option>Price: High to Low</option>
+                                    <option>Name: A to Z</option>
+                                    <option>Date Added</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<style>
+    .wishlist-img {
+  width: 200px; /* Adjust to your preferred size */
+  height: 200px; /* Adjust to your preferred size */
+  object-fit: cover; /* Ensures the image covers the entire area */
+}
+
+    </style>
+      
+    <!-- Wishlist Items -->
+  <div class="row" id="wishlistItems">
+
+
+
+</div>
+
+</div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+});
+</script>

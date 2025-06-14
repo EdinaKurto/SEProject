@@ -1,0 +1,223 @@
+<div class="container mt-4">
+    <!-- Orders Table -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card border-dark">
+                <div class="card-header" style="background-color: #53342A; color: white;">
+                    <h5 class="mb-0">Orders Management</h5>
+                </div>
+                <div class="card-body">
+                    <input type="text" id="orderSearch" class="form-control mb-3" placeholder="Search orders...">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm text-nowrap" id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Items Ordered</th>
+                                    <th>Delivery Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersBody">
+                                <tr>
+                                    <td>001</td>
+                                    <td>John Doe</td>
+                                    <td>3</td>
+                                    <td>
+                                        <select class="form-select order-status">
+                                            <option value="Pending" selected>Pending</option>
+                                            <option value="Shipped">Shipped</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm btn-success save-order" disabled>Save</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>002</td>
+                                    <td>Jane Smith</td>
+                                    <td>2</td>
+                                    <td>
+                                        <select class="form-select order-status">
+                                            <option value="Pending">Pending</option>
+                                            <option value="Shipped">Shipped</option>
+                                            <option value="Delivered" selected>Delivered</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm btn-success save-order" disabled>Save</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>003</td>
+                                    <td>Michael Johnson</td>
+                                    <td>5</td>
+                                    <td>
+                                        <select class="form-select order-status">
+                                            <option value="Pending">Pending</option>
+                                            <option value="Shipped" selected>Shipped</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm btn-success save-order" disabled>Save</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Items Table -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card border-dark">
+                <div class="card-header" style="background-color: #53342A; color: white;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Items Management</h5>
+                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                            Add New Item
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <input type="text" id="itemSearch" class="form-control mb-3" placeholder="Search items...">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm text-nowrap" id="itemsTable">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Item Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #53342A; color: white;">
+                <h5 class="modal-title">Add New Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addItemForm">
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                        <input class="form-control" type="file" id="formFileMultiple" name="product_images" multiple>
+                      </div>
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="addItemName" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemCategory" class="form-label">Category</label>
+                        <select class="form-control" name="category_id">
+                            </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemQuantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="addItemQuantity" name="quantity" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="addItemPrice" name="price_each" step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemDescription" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="addItemDescription" name="description" required>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="addItemForm" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Item Modal (Same as Add Item Modal) -->
+<div class="modal fade" id="editItemModal" name="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #53342A; color: white;">
+                <h5 class="modal-title">Edit Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editItemForm">
+                    <div id="existingImages" class="d-flex flex-wrap gap-2 mt-2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                        <input class="form-control" type="file" id="formFileMultiple1" multiple>
+                      </div>
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="itemName1" name="name"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemCategory" class="form-label">Category</label>
+                        <select class="form-control" name="category_id">
+                            </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemQuantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="itemQuantity1" name="quantity"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="itemPrice1" name="price_each"  step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemDescription" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="itemDescription1" name="description" required>
+                    </div>
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="editItemForm" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    new DataTable('#ordersTable');
+    new DataTable('#itemsTable');
+</script>
+
+<script src="./services/product-service.js"></script>
+<script src="./services/order-service.js"></script>
+<script>
+  $(document).ready(function () {
+    ProductService.init();
+    ProductService.getAllProducts();
+
+    $('#editItemForm').on('submit', function (e) {
+      e.preventDefault();
+      ProductService.updateProduct();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    OrderService.getAllOrders();
+  });
+</script>

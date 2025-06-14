@@ -1,0 +1,114 @@
+<!-- for PR -->
+<section style="background: linear-gradient(135deg, #4F625A, #2E3D36);">
+
+
+
+
+  <!-- below modal -->
+    <div class="container py-5">
+      <!-- Button trigger modal -->
+
+
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#filterModal" style="background: linear-gradient(135deg, #53342A, #3E241B);">Open Filters</button>
+        
+
+        
+
+        
+      
+
+    <div id="products-list" class="row"></div>
+
+
+  </section>
+
+          <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <h5 class="modal-title" id="filterModalLabel">Filters</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <h6 class="mb-3">Select Categories</h6>
+                        <div class="d-flex flex-wrap gap-2" id="category-checkboxes">
+                        <!-- Categories will be loaded here dynamically -->
+                  </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                      <h6 class="mb-3">Price Range</h6>
+                      <select class="form-select" id="priceRange">
+                        <option selected value="">Select Price Range</option>
+                        <option value="0-50">$0 - $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-250">$100 - $250</option>
+                        <option value="250-500">$250 - $500</option>
+                        <option value="500+">$500+</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <h6 class="mb-3">Sort By</h6>
+                      <select class="form-select" id="sortBy">
+                        <option selected value="">Choose sorting option</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-secondary" id="resetBtn">Reset Filters</button>
+                <button type="button" class="btn btn-primary" id="applyBtn">Apply Filters</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<script>
+document.getElementById("resetBtn").addEventListener("click", function () {
+  document.querySelectorAll(".category-checkbox").forEach(checkbox => checkbox.checked = false);
+  document.getElementById("priceRange").value = "";
+  document.getElementById("sortBy").value = "";
+  ProductService.loadProducts();
+});
+
+document.getElementById("applyBtn").addEventListener("click", function () {
+  const selectedCategoryIds = [...document.querySelectorAll(".category-checkbox:checked")].map(cb => cb.value);
+  const selectedPrice = document.getElementById("priceRange").value;
+  const selectedSort = document.getElementById("sortBy").value;
+
+  const filters = {};
+
+  if (selectedCategoryIds.length) {
+    filters.category_id = selectedCategoryIds.join(",");
+  }
+  if (selectedPrice) {
+    const [min, max] = selectedPrice.split("-");
+    filters.min_price = min;
+    if (max) filters.max_price = max.replace("+", "");
+  }
+  if (selectedSort) {
+    filters.sort = selectedSort === "low-high" ? "price_asc" : "price_desc";
+  }
+
+  ProductService.loadProducts(filters);
+
+  const filterModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('filter_modal'));
+  filterModal.hide();
+});
+</script>
+
+<script src="./services/product-service.js"></script>
+<!-- <script>
+  $(document).ready(function () {
+    ProductService.renderCategoryCheckboxes();
+    ProductService.loadProducts();
+  });
+</script> -->
+

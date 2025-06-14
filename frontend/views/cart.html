@@ -1,0 +1,117 @@
+<section class="h-100 h-custom" style="background: linear-gradient(to right, #776b5f, #9c8f7f, #ad9b82, #c2af97, #e0c9a6);">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card" style="background-color: #eee; border: 2px solid #53342A;">
+          <div class="card-body p-4">
+            <div class="row">
+
+              <!-- Shopping Cart Column -->
+              <div class="col-lg-7">
+                <h5 class="mb-3">
+                  <a href="#browse" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a>
+                </h5>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <p class="mb-1">Shopping cart</p>
+                    <p class="mb-0" id="cartItemCount">Loading...</p>
+                  </div>
+                </div>
+                <div id="cartItems"></div>
+              </div>
+
+              <!-- Card Details Column -->
+              <div class="col-lg-5 d-flex flex-column">
+                <div class="card bg-primary text-white rounded-3 h-100 align-self-stretch">
+                  <div class="card-body d-flex flex-column justify-content-center" style="background-color: #4F625A; height: 100%;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h5 class="mb-0">Card details</h5>
+                    </div>
+
+                    <!-- FORM -->
+                    <form id="checkout_form" novalidate>
+
+                      <div class="row mb-4">
+                        <div class="col-md-6">
+                          <div class="form-outline form-white">
+                            <input type="text" name="name" id="name" class="form-control form-control-lg"
+                              style="background-color: #efe4d4;" placeholder="Name" size="7" />
+                            <label class="form-label text-white" for="name">Name</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-outline form-white">
+                            <input type="text" name="surname" id="surname" class="form-control form-control-lg"
+                              style="background-color: #efe4d4;" placeholder="Surname" size="7" />
+                            <label class="form-label text-white" for="surname">Surname</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-outline form-white mb-4">
+                        <input type="text" name="address" id="address" class="form-control form-control-lg"
+                          placeholder="Address" style="background-color: #efe4d4;" />
+                        <label class="form-label text-white" for="address">Address</label>
+                      </div>
+
+                      <div class="row mb-4">
+                        <div class="col-md-6">
+                          <div class="form-outline form-white">
+                            <input type="text" name="city" id="city" class="form-control form-control-lg"
+                              style="background-color: #efe4d4;" placeholder="City" size="7" />
+                            <label class="form-label text-white" for="city">City</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-outline form-white">
+                            <input type="text" name="country" id="country" class="form-control form-control-lg"
+                              style="background-color: #efe4d4;" placeholder="Country" size="7" />
+                            <label class="form-label text-white" for="country">Country</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-outline form-white mb-4">
+                        <input type="text" name="phone" id="phone" class="form-control form-control-lg"
+                          placeholder="Phone Number" style="background-color: #efe4d4;" />
+                        <label class="form-label text-white" for="phone">Phone Number</label>
+                      </div>
+
+                      <hr class="my-4">
+
+                      <div class="d-flex justify-content-between mb-4">
+                        <p class="mb-2">Total (Incl. taxes)</p>
+                        <p class="mb-2" id="cart-total-value">$72.00</p>
+                      </div>
+
+                      <div class="d-flex justify-content-center gap-3">
+                        <!-- Pay with Card -->
+                        <button type="submit" id="pay-card-btn" class="btn btn-lg btn-white-custom"
+                          style="background-color: #efe4d4; border: 1px solid #53342a; color: #53342a;">
+                          <div class="d-flex align-items-center gap-2">
+                            <span>Pay with Card</span>
+                            <i class="fas fa-credit-card"></i>
+                          </div>
+                        </button>
+                      </div>
+
+                    </form>
+                    <!-- END FORM -->
+
+                  </div>
+                </div>
+              </div>
+              <!-- End Card Column -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  OrderService.initCheckoutFormValidation();
+</script>

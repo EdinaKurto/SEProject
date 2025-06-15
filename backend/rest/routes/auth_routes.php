@@ -185,13 +185,6 @@
             error_log('Registration error: ' . $e->getMessage());
             Flight::halt(500, 'Registration failed: ' . $e->getMessage());
         }
-            Flight::json(
-                array_merge($user, ['token' => $token])
-            );
-        } catch (Exception $e) {
-            error_log('Registration error: ' . $e->getMessage());
-            Flight::halt(500, 'Registration failed: ' . $e->getMessage());
-        }
     });
 
 });

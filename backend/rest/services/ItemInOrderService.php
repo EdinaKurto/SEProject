@@ -12,6 +12,7 @@ class ItemInOrderService {
     public function add_item_in_order($order_id, $product_id, $quantity)
     {
         if (empty($product_id) || empty($order_id) || $quantity === null) return "Invalid input";
+
         return $this->itemInOrderDao->add_item_in_order($order_id, $product_id, $quantity);
     }
 }

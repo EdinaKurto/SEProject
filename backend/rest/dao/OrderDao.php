@@ -5,6 +5,7 @@ class OrderDao extends BaseDao {
     {
         parent::__construct('order');
     }
+
     public function add_order($order, $user_id)
     {
         $order_data = [

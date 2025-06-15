@@ -9,7 +9,7 @@ class Config
 {
     public static function DB_NAME()
     {
-        return Config::get_env("DB_NAME", 'aragon');
+        return Config::get_env("DB_NAME", 'AragonSE');
     }
 
     public static function DB_PORT()
@@ -24,7 +24,7 @@ class Config
 
     public static function DB_PASSWORD()
     {
-        return Config::get_env("DB_PASSWORD", '');
+        return Config::get_env("DB_PASSWORD", '12345678');
     }
 
     public static function DB_HOST()
@@ -40,5 +40,22 @@ class Config
     public static function get_env($name, $default)
     {
         return isset($_ENV[$name]) && trim($_ENV[$name]) != "" ? $_ENV[$name] : $default;
+    }
+}
+
+// Simple DB connection test (for debugging)
+if (php_sapi_name() === 'cli' || isset($_GET['test_db'])) {
+    $mysqli = @new mysqli(
+        Config::DB_HOST(),
+        Config::DB_USER(),
+        Config::DB_PASSWORD(),
+        Config::DB_NAME(),
+        Config::DB_PORT()
+    );
+    if ($mysqli->connect_errno) {
+        echo "Database connection failed: " . $mysqli->connect_error;
+    } else {
+        echo "Database connection successful!";
+        $mysqli->close();
     }
 }

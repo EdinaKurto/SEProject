@@ -120,7 +120,10 @@ var UserService = {
         },
         function (xhr) {
         Utils.unblock_ui("#signup-form");
-        toastr.error("Sorry, something went wrong during registration.");
+        // Show backend error message if available
+        const response = xhr.responseJSON || {};
+        const msg = response.message || "Sorry, something went wrong during registration.";
+        toastr.error(msg);
         }
     );
   },

@@ -128,7 +128,13 @@
             if (!isset($data['email']) || !isset($data['password']) || !isset($data['repeat_password_signup'])) {
                 Flight::halt(400, 'Email, password and repeat password are required.');
             }
+            if (!isset($data['email']) || !isset($data['password']) || !isset($data['repeat_password_signup'])) {
+                Flight::halt(400, 'Email, password and repeat password are required.');
+            }
 
+            if (trim($data['email']) == "" || trim($data['password']) == "" || trim($data['repeat_password_signup']) == "" || trim($data['address']) == "" ) {
+                Flight::halt(400, 'Email, password, repeat password, and address cannot be empty.');
+            }
             if (trim($data['email']) == "" || trim($data['password']) == "" || trim($data['repeat_password_signup']) == "" || trim($data['address']) == "" ) {
                 Flight::halt(400, 'Email, password, repeat password, and address cannot be empty.');
             }
@@ -140,7 +146,17 @@
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
             unset($data['repeat_password_signup']);
             $data['role_id'] = isset($data['role_id']) ? intval($data['role_id']) : 1;
+            if ($data['password'] !== $data['repeat_password_signup']) {
+                Flight::halt(400, 'Password and repeat password do not match');
+            }
+            
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            unset($data['repeat_password_signup']);
+            $data['role_id'] = isset($data['role_id']) ? intval($data['role_id']) : 1;
 
+            error_log('Registration data for DB: ' . json_encode($data)); // Log the DB payload
+            $user = Flight::get('user_service')->add_user($data);
+            error_log('User after insert: ' . json_encode($user)); // Log the result
             error_log('Registration data for DB: ' . json_encode($data)); // Log the DB payload
             $user = Flight::get('user_service')->add_user($data);
             error_log('User after insert: ' . json_encode($user)); // Log the result
@@ -156,7 +172,19 @@
                 Config::JWT_SECRET(),
                 'HS256'
             );
+            $token = JWT::encode(
+                $jwt_payload,
+                Config::JWT_SECRET(),
+                'HS256'
+            );
 
+            Flight::json(
+                array_merge($user, ['token' => $token])
+            );
+        } catch (Exception $e) {
+            error_log('Registration error: ' . $e->getMessage());
+            Flight::halt(500, 'Registration failed: ' . $e->getMessage());
+        }
             Flight::json(
                 array_merge($user, ['token' => $token])
             );

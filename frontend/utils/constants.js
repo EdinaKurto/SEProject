@@ -19,3 +19,11 @@ window.addEventListener('error', function(event) {
 window.addEventListener('unhandledrejection', function(event) {
     console.error('Unhandled Promise rejection:', event.reason);
 });
+
+// Enhanced error logging for debugging
+window.addEventListener('error', function(event) {
+    console.error('Global JS Error:', event.message, 'at', event.filename + ':' + event.lineno);
+});
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled Promise rejection:', event.reason);
+});

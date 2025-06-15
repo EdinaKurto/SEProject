@@ -29,7 +29,7 @@ if (rawImageUrl && rawImageUrl.startsWith("https//")) {
   rawImageUrl = rawImageUrl.replace("https//", "https://");
 }
 
-const imageUrl = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
+const imageUrl = rawImageUrl || 'assets/images/Red_Perfume.jpeg';
 
 
 
@@ -42,23 +42,23 @@ const imageUrl = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
                 <img src="${imageUrl}" class="img-fluid rounded wishlist-img" alt="${item.name}">
               </div>
               <div class="col-md-4 col-sm-8 mb-3 mb-md-0">
-                <h3 class="card-title" style="color: #d6cec4;">${item.name}</h3>
+                <h3 class="card-title" style="color:rgb(255, 255, 255);">${item.name}</h3>
                 <div class="mb-2">
-                  <span class="fw-bold" style="font-size: 1.25rem; color: #ad9b82;">$${item.price.toFixed(2)}</span>
+                  <span class="fw-bold" style="font-size: 1.25rem; color:rgb(161, 130, 173);">$${item.price.toFixed(2)}</span>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
-                <label class="form-label" style="font-size: 1.15rem; color: #d6cec4;">Quantity</label>
+                <label class="form-label" style="font-size: 1.15rem; color:rgb(255, 255, 255);">Quantity</label>
                 <div class="input-group">
                   <button class="btn btn-outline-danger decrease-qty" type="button">-</button>
-                  <input type="number" class="form-control text-center quantity-input" value="${item.cart_quantity}" min="1" data-product-id="${item.product_id}" style="background-color: #d6cec4;">
+                  <input type="number" class="form-control text-center quantity-input" value="${item.cart_quantity}" min="1" data-product-id="${item.product_id}" style="background-color:rgb(255, 255, 255);">
                   <button class="btn btn-outline-success increase-qty" type="button">+</button>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <button class="btn btn-success mb-2 w-100 add-to-cart-btn"
                         data-product-id="${item.product_id}"
-                        style="background-color: #4F625A; border-color: #4F625A;">
+                        style="background-color:rgb(95, 79, 98); border-color:rgb(96, 79, 98);">
                   <i class="bi bi-cart-plus"></i> Add to Cart
                 </button>
                 <button class="btn btn-outline-danger w-100" onclick="WishlistService.removeItemFromWishlist(${item.product_id})">
@@ -223,13 +223,12 @@ addAllToCart: function () {
         product_id: item.product_id,
         quantity: item.cart_quantity
       }, function () {
-        console.log(`✔ Added ${item.name} to cart`);
+        console.log(`Added ${item.name} to cart`);
       }, function () {
-        toastr.error(`❌ Failed to add ${item.name} to cart.`);
+        toastr.error(`Failed to add ${item.name} to cart.`);
       });
     }
   });
-
   toastr.success("All wishlist items are being added to your cart.");
 },
 

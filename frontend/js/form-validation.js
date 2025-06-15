@@ -38,9 +38,8 @@ function validateForm(formName) {
                 equalTo: "Passwords do not match. Please try again."
             }
         }
-    }).form(); // Ensures validation is triggered
-
-    return isValid; // Return true if valid, false if not
+    }).form(); 
+    return isValid; 
 }
 
 var FormValidation = {

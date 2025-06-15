@@ -1,8 +1,4 @@
 <?php
-/* header("Access-Control-Allow-Origin: https://cuppatea-frontend-gjxs4.ondigitalocean.app");
- header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
- header("Access-Control-Allow-Headers: Content-Type, Authorization, Authentication");
- header("Access-Control-Allow-Credentials", "true"); */
  require_once __DIR__ . '/../services/ProductService.php';
  require_once __DIR__ . '/../../utils/MessageHandler.php';
  require_once __DIR__ . '/../../vendor/autoload.php';
@@ -27,11 +23,11 @@ use Aws\S3\S3Client;
      *         required=true,
      *         @OA\JsonContent(
      *             required={"name", "category_id", "quantity", "price_each", "description"},
-     *             @OA\Property(property="name", type="string", example="Mint Tea", description="Name of the product"),
+     *             @OA\Property(property="name", type="string", example="Mint Perfume", description="Name of the product"),
      *             @OA\Property(property="category_id", type="integer", example=1, description="ID of the category the product belongs to"),
      *             @OA\Property(property="quantity", type="integer", example=50, description="Available quantity of the product"),
      *             @OA\Property(property="price_each", type="number", format="float", example=21.50, description="Price of each unit of the product"),
-     *             @OA\Property(property="description", type="string", example="Premium mint tea.", description="Description of the product")
+     *             @OA\Property(property="description", type="string", example="Premium mint perfume.", description="Description of the product")
      *         )
      *     ),
      *     @OA\Response(
@@ -39,11 +35,11 @@ use Aws\S3\S3Client;
      *         description="Product successfully created",
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="name", type="string", example="Mint Tea", description="Name of the product"),
+     *             @OA\Property(property="name", type="string", example="Mint Perfume", description="Name of the product"),
      *             @OA\Property(property="category_id", type="integer", example=1, description="ID of the category the product belongs to"),
      *             @OA\Property(property="quantity", type="integer", example=50, description="Available quantity of the product"),
      *             @OA\Property(property="price_each", type="number", format="float", example=21.50, description="Price of each unit of the product"),
-     *             @OA\Property(property="description", type="string", example="Premium mint tea.", description="Description of the product")
+     *             @OA\Property(property="description", type="string", example="Premium mint perfume.", description="Description of the product")
      *         )
      *     ),
      *     @OA\Response(
@@ -118,11 +114,11 @@ use Aws\S3\S3Client;
      *         @OA\JsonContent(
      *             type="object",
      *             @OA\Property(property="id", type="integer", example=5, description="ID of the product"),
-     *             @OA\Property(property="name", type="string", example="Mint Tea", description="Name of the product"),
-     *             @OA\Property(property="category", type="string", example="Green Teas", description="ID of the category the product belongs to"),
+     *             @OA\Property(property="name", type="string", example="Mint Perfume", description="Name of the product"),
+     *             @OA\Property(property="category", type="string", example="Green Perfumes", description="ID of the category the product belongs to"),
      *             @OA\Property(property="quantity", type="string", example="50", description="Available quantity of the product"),
      *             @OA\Property(property="price_each", type="string", example="21.50", description="Price of each unit of the product"),
-     *             @OA\Property(property="description", type="string", example="Premium mint tea.")
+     *             @OA\Property(property="description", type="string", example="Premium mint perfume.")
      *         )
      *     ),
      *     @OA\Response(
@@ -190,8 +186,8 @@ use Aws\S3\S3Client;
      *             @OA\Items(
      *         type="object",
      *         @OA\Property(property="id", type="integer", example=1, description="ID of the product"),
-     *         @OA\Property(property="name", type="string", example="Green Tea", description="Name of the product"),
-     *         @OA\Property(property="category_name", type="string", example="White Teas", description="Name of the category the product belongs to"),
+     *         @OA\Property(property="name", type="string", example="Green Perfume", description="Name of the product"),
+     *         @OA\Property(property="category_name", type="string", example="White Perfumes", description="Name of the category the product belongs to"),
      *         @OA\Property(property="quantity", type="integer", example=22, description="Available quantity of the product"),
      *         @OA\Property(property="price_each", type="number", format="float", example=22.1, description="Price of each unit of the product"),
      *         @OA\Property(property="description", type="string", example="Description", description="Description of the product")
@@ -221,7 +217,6 @@ use Aws\S3\S3Client;
          MessageHandler::handleServiceResponse($products);
 
      });
-
 
 
  
@@ -282,11 +277,11 @@ use Aws\S3\S3Client;
      *         required=true,
      *         @OA\JsonContent(
      *             required={"name", "category_id", "quantity", "price_each", "description"},
-     *             @OA\Property(property="name", type="string", example="Minty Tea", description="Updated name of the product"),
+     *             @OA\Property(property="name", type="string", example="Minty Perfume", description="Updated name of the product"),
      *             @OA\Property(property="category_id", type="integer", example=1, description="Updated category ID of the product"),
      *             @OA\Property(property="quantity", type="integer", example=50, description="Updated available quantity of the product"),
      *             @OA\Property(property="price_each", type="number", format="float", example=29.99, description="Updated price of each unit of the product"),
-     *             @OA\Property(property="description", type="string", example="Updated mint tea.", description="Updated description of the product")
+     *             @OA\Property(property="description", type="string", example="Updated mint perfume.", description="Updated description of the product")
      *         )
      *     ),
      *     @OA\Response(
@@ -295,11 +290,11 @@ use Aws\S3\S3Client;
      *         @OA\JsonContent(
      *             type="object",
      *             @OA\Property(property="id", type="integer", example=5, description="ID of the updated product"),
-     *             @OA\Property(property="name", type="string", example="Minty Tea", description="Updated name of the product"),
+     *             @OA\Property(property="name", type="string", example="Minty Perfume", description="Updated name of the product"),
      *             @OA\Property(property="category_id", type="integer", example=1, description="Updated category ID of the product"),
      *             @OA\Property(property="quantity", type="integer", example=50, description="Updated available quantity of the product"),
      *             @OA\Property(property="price_each", type="number", format="float", example=29.99, description="Updated price of each unit of the product"),
-     *             @OA\Property(property="description", type="string", example="Updated mint tea.", description="Updated description of the product")
+     *             @OA\Property(property="description", type="string", example="Updated mint perfume.", description="Updated description of the product")
      *         )
      *     ),
      *     @OA\Response(
@@ -319,7 +314,7 @@ use Aws\S3\S3Client;
             Flight::halt(400, "Invalid product ID.");
         }
 
-        // ✅ Check if the product exists
+        // Check if the product exists
         $existing_product = Flight::get('product_service')->get_product_by_id($id);
         if (!$existing_product) {
             Flight::halt(404, "Product not found.");
@@ -351,7 +346,6 @@ use Aws\S3\S3Client;
         }
 
 
-        // --- If all checks pass, update the product ---
         $product = [
             'name' => trim($data['name']),
             'category_id' => intval($data['category_id']),
@@ -380,7 +374,7 @@ Flight::route('POST /upload_image/@product_id', function($product_id) {
     }
 
     // S3 konfiguracija
-    $bucket = 'cuppatea-uploads';
+    $bucket = 'aragonperfume-uploads';
     $region = 'fra1';
     $endpoint = "https://fra1.digitaloceanspaces.com";
 
@@ -431,7 +425,7 @@ Flight::route('POST /product_images/@product_id', function($product_id) {
         Flight::halt(400, 'Invalid image ID list.');
     }
 
-    // 1. Briši slike koje nisu na listi
+    // Briši slike koje nisu na listi
     $allImages = $product_service->get_images_by_product_id($product_id);
     foreach ($allImages as $img) {
         if (!in_array($img['id'], $existingImageIds)) {
@@ -447,7 +441,7 @@ Flight::route('POST /product_images/@product_id', function($product_id) {
         $fileCount = $isSingle ? 1 : count($newImages['tmp_name']);
 
         // S3 config
-        $bucket = 'cuppatea-uploads';
+        $bucket = 'aragonperfume-uploads';
         $region = 'fra1';
         $endpoint = "https://fra1.digitaloceanspaces.com";
 
@@ -488,17 +482,10 @@ Flight::route('POST /product_images/@product_id', function($product_id) {
                     'image' => $url
                 ]);
             } catch (Exception $e) {
-                // Samo loguj, nastavi dalje s ostalim slikama
                 error_log('Upload failed: ' . $e->getMessage());
             }
         }
     }
-
     Flight::json(["message" => "Product images updated successfully."]);
+});  
 });
-
-
-
-     
- 
- });

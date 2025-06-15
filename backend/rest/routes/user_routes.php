@@ -1,8 +1,4 @@
 <?php
-/* header("Access-Control-Allow-Origin: https://cuppatea-frontend-gjxs4.ondigitalocean.app");
-header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, Authentication");
-header("Access-Control-Allow-Credentials", "true"); */
 
 require_once __DIR__ . '/../services/UserService.php';
 require_once __DIR__ . '/../../utils/MessageHandler.php';
@@ -30,10 +26,10 @@ Flight::group('/users', function() {
      *         @OA\JsonContent(
      *             type="object",
      *             @OA\Property(property="id", type="string", example="3", description="User ID"),
-     *             @OA\Property(property="name", type="string", example="Anja", description="User's full name"),
-     *             @OA\Property(property="email", type="string", example="anja.sehovac@stu.ibu.edu.ba", description="User's email address"),
+     *             @OA\Property(property="name", type="string", example="Edina", description="User's full name"),
+     *             @OA\Property(property="email", type="string", example="edina.kurto@stu.ibu.edu.ba", description="User's email address"),
      *             @OA\Property(property="date_of_birth", type="string", example="2003-01-27", description="User's date of birth"),
-     *             @OA\Property(property="username", type="string", example="anja", description="User's username"),
+     *             @OA\Property(property="username", type="string", example="edina", description="User's username"),
      *             @OA\Property(property="image", type="string", nullable=true, example=null, description="URL of the user's profile image"),
      *             @OA\Property(property="role_id", type="string", example="1", description="Role ID of the user"),
      *             @OA\Property(property="address", type="string", example="test revolucije bb", description="User's address")
@@ -67,10 +63,10 @@ Flight::group('/users', function() {
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="name", type="string", example="Anja Sehovac", description="Updated name of the user"),
-     *             @OA\Property(property="email", type="string", example="anja.sehovac@stu.ibu.edu.ba", description="Updated email of the user"),
+     *             @OA\Property(property="name", type="string", example="Edina Kurto", description="Updated name of the user"),
+     *             @OA\Property(property="email", type="string", example="edina.kurto@stu.ibu.edu.ba", description="Updated email of the user"),
      *             @OA\Property(property="date_of_birth", type="string", example="2003-06-12", description="Updated date of birth of the user"),
-     *             @OA\Property(property="username", type="string", example="anja", description="Updated username of the user"),
+     *             @OA\Property(property="username", type="string", example="edina", description="Updated username of the user"),
      *             @OA\Property(property="image", type="string", nullable=true, example=null, description="Updated profile image URL of the user"),
      *             @OA\Property(property="address", type="string", example="test revolucije bb", description="Updated address of the user")
      *         )
@@ -81,10 +77,10 @@ Flight::group('/users', function() {
      *         @OA\JsonContent(
      *             type="object",
 
-     *     @OA\Property(property="name", type="string", example="Anja Sehovac", description="Name of the user"),
-     *     @OA\Property(property="email", type="string", example="anja.sehovac@stu.ibu.edu.ba", description="Email address of the user"),
+     *     @OA\Property(property="name", type="string", example="Edina Kurto", description="Name of the user"),
+     *     @OA\Property(property="email", type="string", example="edina.kurto@stu.ibu.edu.ba", description="Email address of the user"),
      *     @OA\Property(property="date_of_birth", type="string", format="date", example="2003-06-12", description="Date of birth of the user"),
-     *     @OA\Property(property="username", type="string", example="anja", description="Username of the user"),
+     *     @OA\Property(property="username", type="string", example="edina", description="Username of the user"),
      *     @OA\Property(property="image", type="string", nullable=true, example=null, description="Profile image URL of the user"),
      *     @OA\Property(property="address", type="string", example="test revolucije bb", description="Address of the user")
 
@@ -219,9 +215,9 @@ Flight::route('POST /upload_image', function () {
         Flight::halt(400, 'Only JPG, PNG, or WEBP images are allowed.');
     }
 
-    $bucket = 'cuppatea-uploads';
+    $bucket = 'aragonperfume-uploads';
 $region = 'fra1';
-$endpoint = "https://fra1.digitaloceanspaces.com"; // ✅ FIXED
+$endpoint = "https://fra1.digitaloceanspaces.com";
 
 $s3 = new S3Client([
     'version' => 'latest',
@@ -253,8 +249,5 @@ try {
 } catch (Exception $e) {
     Flight::halt(500, 'Upload to cloud failed: ' . $e->getMessage());
 }
-
-
 });
-
 });

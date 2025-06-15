@@ -9,8 +9,6 @@
      {
          $this->categoryDao = new CategoryDao();
      }
-
- 
      public function getCategories() {
 
          return $this->categoryDao->getCategories();
@@ -27,4 +25,4 @@
     }
     return $this->categoryDao->get_category_by_id($id);
 }
- }
+}

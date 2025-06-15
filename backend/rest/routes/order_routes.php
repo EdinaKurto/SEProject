@@ -1,9 +1,4 @@
 <?php
-/* header("Access-Control-Allow-Origin: https://cuppatea-frontend-gjxs4.ondigitalocean.app");
-header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, Authentication");
-header("Access-Control-Allow-Credentials", "true"); */
-
 require_once __DIR__ . '/../services/OrderService.php';
 require_once __DIR__ . '/../../utils/MessageHandler.php';
 
@@ -28,7 +23,7 @@ Flight::group('/order', function () {
      *         type="object",
      *         @OA\Property(property="order_id", type="integer", example=2, description="ID of the order"),
      *         @OA\Property(property="order_date", type="string", example="2025-04-06 18:04:50", description="Date and time when the order was placed"),
-     *         @OA\Property(property="product_names", type="string", example="Green Tea,Cherry Blossom", description="Comma-separated names of the products in the order"),
+     *         @OA\Property(property="product_names", type="string", example="Green Perfume,Cherry Blossom", description="Comma-separated names of the products in the order"),
      *         @OA\Property(property="quantities", type="string", example="6,6", description="Comma-separated quantities of the products in the order"),
      *         @OA\Property(property="total_price", type="number", format="float", example=282.54000091552734, description="Total price of the order"),
      *         @OA\Property(property="status_name", type="string", example="Delivered", description="Status of the order")
@@ -161,8 +156,8 @@ Flight::group('/order', function () {
      *         required=true,
      *         @OA\JsonContent(
      *             required={"name", "surname", "address", "city", "country", "phone_number"},
-     *             @OA\Property(property="name", type="string", example="Anja", description="Customer's first name"),
-     *             @OA\Property(property="surname", type="string", example="Sehovac", description="Customer's last name"),
+     *             @OA\Property(property="name", type="string", example="Edina", description="Customer's first name"),
+     *             @OA\Property(property="surname", type="string", example="Kurto", description="Customer's last name"),
      *             @OA\Property(property="address", type="string", example="Test revolucije bb", description="Customer's address"),
      *             @OA\Property(property="city", type="string", example="Sarajevo", description="Customer's city"),
      *             @OA\Property(property="country", type="string", example="Bosnia and Herzegovina", description="Customer's country"),
@@ -341,10 +336,10 @@ Flight::group('/order', function () {
  *         description="List of all orders for all users",
  *         @OA\JsonContent(type="array", @OA\Items(
  *             @OA\Property(property="order_id", type="integer", example=1),
- *             @OA\Property(property="user_name", type="string", example="Ilma"),
- *             @OA\Property(property="user_email", type="string", example="ilma@gmail.com"),
+ *             @OA\Property(property="user_name", type="string", example="Arman Ćulah"),
+ *             @OA\Property(property="user_email", type="string", example="arman.culah@gmail.com"),
  *             @OA\Property(property="order_date", type="string", example="2025-05-30 15:00:00"),
- *             @OA\Property(property="product_names", type="string", example="Candle,Soap"),
+ *             @OA\Property(property="product_names", type="string", example="Candle,Perfume"),
  *             @OA\Property(property="quantities", type="string", example="2,3"),
  *             @OA\Property(property="total_price", type="number", example=78.50),
  *             @OA\Property(property="status_name", type="string", example="Pending")
@@ -367,6 +362,4 @@ Flight::route('GET /statuses', function () {
         $statuses = Flight::get('order_service')->get_order_statuses();
         MessageHandler::handleServiceResponse($statuses);
     });
-
-
 });

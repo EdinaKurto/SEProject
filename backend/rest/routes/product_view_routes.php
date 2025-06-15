@@ -1,9 +1,4 @@
 <?php
-/* header("Access-Control-Allow-Origin: https://cuppatea-frontend-gjxs4.ondigitalocean.app");
- header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
- header("Access-Control-Allow-Headers: Content-Type, Authorization, Authentication");
- header("Access-Control-Allow-Credentials", "true"); */
-
  require_once __DIR__ . '/../services/ProductViewService.php';
  require_once __DIR__ . '/../../utils/MessageHandler.php';
  
@@ -81,7 +76,7 @@
      *         @OA\Items(
      *             type="object",
      *             @OA\Property(property="customer_id", type="integer", example=3, description="ID of the customer"),
-     *             @OA\Property(property="customer_name", type="string", example="Anja", description="Name of the customer"),
+     *             @OA\Property(property="customer_name", type="string", example="Edina", description="Name of the customer"),
      *             @OA\Property(property="product_id", type="integer", example=2, description="ID of the product"),
      *             @OA\Property(property="product_name", type="string", example="Cherry Blossom", description="Name of the product"),
      *             @OA\Property(property="time", type="string", format="date-time", example="2025-05-04 15:09:10", description="Timestamp of the product view")
@@ -106,5 +101,4 @@
          $result = $productViewService->getUserProductViews($user_id);
          MessageHandler::handleServiceResponse($result);
      });
- 
- });
+});

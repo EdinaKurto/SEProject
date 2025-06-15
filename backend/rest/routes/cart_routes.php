@@ -1,9 +1,4 @@
 <?php
-/* header("Access-Control-Allow-Origin: https://cuppatea-frontend-gjxs4.ondigitalocean.app");
-header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, Authentication");
-header("Access-Control-Allow-Credentials", "true"); */
-
 require_once __DIR__ . '/../services/CartService.php';
 require_once __DIR__ . '/../../utils/MessageHandler.php';
 
@@ -58,7 +53,7 @@ Flight::group('/cart', function () {
      *                     type="object",
      *                     properties={
      *                         @OA\Property(property="product_id", type="integer", example=1),
-     *                         @OA\Property(property="name", type="string", example="Green Tea"),
+     *                         @OA\Property(property="name", type="string", example="Green Perfume"),
      *                         @OA\Property(property="category_id", type="integer", example=2),
      *                         @OA\Property(property="price", type="float", example="Description"),
      *                         @OA\Property(property="description", type="string", example = "Description"),
@@ -216,7 +211,6 @@ Flight::route('POST /add', function () {
         Flight::halt(400, "'quantity' must be a positive number.");
     }
 
-    // --- Sve validno, dodaj u korpu ---
     $result = Flight::get('cart_service')->add_to_cart(
         $user_id,
         intval($data['product_id']),
@@ -343,7 +337,6 @@ Flight::route('POST /add', function () {
 
         MessageHandler::handleServiceResponse($result, 'Cart updated');
     });
-
 
 
     /**

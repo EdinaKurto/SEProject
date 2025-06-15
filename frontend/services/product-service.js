@@ -151,7 +151,7 @@ if (data.images && data.images.length > 0) {
       rawImageUrl = rawImageUrl.replace("https//", "https://");
     }
 
-    imageElement.src = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
+    imageElement.src = rawImageUrl || 'assets/images/Red_Perfume.jpeg';
 
 
     imageElement.classList.add("img-thumbnail");
@@ -161,7 +161,7 @@ if (data.images && data.images.length > 0) {
     deleteBtn.innerHTML = "&times;";
     deleteBtn.classList.add("btn", "btn-sm", "btn-danger", "position-absolute", "top-0", "end-0");
     deleteBtn.onclick = function () {
-      imageWrapper.remove(); // samo vizualno, kasnije se filtrira
+      imageWrapper.remove(); 
     };
 
     imageWrapper.dataset.imageId = img.id;
@@ -181,16 +181,13 @@ if (data.images && data.images.length > 0) {
         console.error('Category ID not found for category:', data.category);
       }
 
-      if (callback) callback(); // ✅ pozovi modal tek kad sve završi
+      if (callback) callback();
     });
 
   }, function(xhr, status, error) {
     console.error('Error fetching product data:', error);
   });
 },
-
-
-
 
 
 
@@ -223,7 +220,7 @@ if (data.images && data.images.length > 0) {
         );
       });
 
-      resolve(); // Sve prošlo dobro
+      resolve(); 
     }, function (xhr, status, error) {
       console.error('Failed to load categories:', error);
       reject(error);
@@ -252,7 +249,7 @@ updateProduct: function () {
     "products/update/" + productId,
     updatedData,
     function () {
-      // ✅ Nakon uspješnog update-a, ažuriraj slike
+      //  Nakon uspješnog update-a, ažuriraj slike
       const existingImageIds = Array.from(document.querySelectorAll("#existingImages div"))
         .map(div => parseInt(div.dataset.imageId));
 
@@ -310,7 +307,7 @@ openDeleteConfirmationDialog: function (productStr) {
     return;
   }
 
-  Utils.block_ui("body"); // You can change this selector to match your UI
+  Utils.block_ui("body");
 
   RestClient.delete(
     `products/delete/${productId}`,
@@ -329,13 +326,9 @@ openDeleteConfirmationDialog: function (productStr) {
 
 
 
-
-
-
-
 loadProducts: function (filters = {}) {
   console.log("loadProducts() called with filters:", filters);
-  const safeFilters = { ...filters, _: Date.now() }; // Copy + cache buster
+  const safeFilters = { ...filters, _: Date.now() }; 
 
   const params = new URLSearchParams(safeFilters).toString();
   const url = `products?${params}`;
@@ -365,7 +358,7 @@ loadProducts: function (filters = {}) {
 
       const imageUrl = rawImageUrl
         ? rawImageUrl
-        : 'assets/images/earl_grey_tea.jpg';
+        : 'assets/images/Purple_Perfume1.jpeg';
 
           container.innerHTML += `
             <div class="col-lg-4 col-md-6 mb-4">
@@ -420,7 +413,7 @@ renderCategoryCheckboxes: function () {
       rawImageUrl = rawImageUrl.replace("https//", "https://");
     }
 
-    mainImage.src = rawImageUrl || 'assets/images/cherry_blossom_tea.jpg';
+    mainImage.src = rawImageUrl || 'assets/images/Blue_Perfume1.jpeg';
 
 
       // Set thumbnails
@@ -433,7 +426,7 @@ renderCategoryCheckboxes: function () {
     rawImageUrl = rawImageUrl.replace("https//", "https://");
   }
 
-  const imgSrc = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
+  const imgSrc = rawImageUrl || 'assets/images/Red_Perfume.jpeg';
         thumbnailRow.innerHTML += `
           <img src="${imgSrc}" alt="Thumbnail ${i+1}" class="thumbnail rounded ${i === 0 ? 'active' : ''}"
                onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
@@ -481,7 +474,7 @@ matchingProducts.forEach(p => {
     rawImageUrl = rawImageUrl.replace("https//", "https://");
   }
 
-  const imageUrl = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
+  const imageUrl = rawImageUrl || 'assets/images/Red_Perfume.jpeg';
 
         recContainer.innerHTML += `
           <div class="col-md-4 col-lg-3 mb-4">
@@ -518,14 +511,14 @@ renderProductDetails: function () {
       RestClient.post("product_views/add", payload, function () {
         console.log("✔ Product view added.");
       }, function () {
-        console.warn("⚠ Failed to log product view.");
+        console.warn("Failed to log product view.");
       });
     }
   } else {
     console.warn("No product ID found in localStorage.");
   }
 
-  // 🔽 MORA biti ovdje, kada je DOM već učitan
+
   const wishlistBtn = document.getElementById("addToWishlistBtn");
 
 /*   if (wishlistBtn) {
@@ -557,17 +550,17 @@ if (rawImageUrl && rawImageUrl.startsWith("https//")) {
   rawImageUrl = rawImageUrl.replace("https//", "https://");
 }
 
-const imageUrl = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
+const imageUrl = rawImageUrl || 'assets/images/Red_Perfume.jpeg';
 
 
       row.innerHTML += `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-          <div class="card" style="background: linear-gradient(135deg, #53342A, #3E241B);">
+          <div class="card" style="background: linear-gradient(135deg, #8a6b99, #6e0e9b)">
             <a href="#product" onclick="localStorage.setItem('product_id', ${product.id})">
               <img src="${imageUrl}" class="card-img-top" alt="${product.name}" />
             </a>
             <div class="card-body">
-              <div class="d-flex justify-content-between mb-3" style="color: #eee">
+              <div class="d-flex justify-content-between mb-3" style="color: #8a6b99">
                 <a href="#product" style="text-decoration: none; color: inherit;" onclick="localStorage.setItem('product_id', ${product.id})">
                   <h5 class="mb-0">${product.name}</h5>
                 </a>
@@ -588,7 +581,6 @@ loadUserProductViews: function () {
       "productViewsTable",
       [
         { data: 'product_name', title: 'Product' },
-/*         { data: 'customer_name', title: 'Customer' }, // optional if admin only */
         { data: 'time', title: 'Viewed At' },
         {
           title: 'Actions',

@@ -1,12 +1,10 @@
 <?php
 require_once __DIR__ . "/BaseDao.php";
-
 class ProductViewDao extends BaseDao {
     public function __construct()
     {
         parent::__construct('product_view');
     }
-
     public function insertOrUpdateProductView($customer_id, $product_id, $time) {
 
         $query = "SELECT COUNT(*) FROM product_view WHERE customer_id = :customer_id AND product_id = :product_id";
@@ -48,8 +46,4 @@ class ProductViewDao extends BaseDao {
         $stmt->execute(["user_id" => $user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-
-
 }

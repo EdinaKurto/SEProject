@@ -120,7 +120,10 @@ var UserService = {
         },
         function (xhr) {
         Utils.unblock_ui("#signup-form");
-        toastr.error("Sorry, something went wrong during registration.");
+        // Show backend error message if available
+        const response = xhr.responseJSON || {};
+        const msg = response.message || "Sorry, something went wrong during registration.";
+        toastr.error(msg);
         }
     );
   },
@@ -162,18 +165,16 @@ var UserService = {
 
 
     RestClient.get("users/current", function(response) {
-        console.log("User Data:", response); // Debugging
-  
-        // Update Profile Picture (Use default if null)
+        console.log("User Data:", response);
     // Fix invalid protocol if present
     let profileImg = document.querySelector("#profile img");
     let rawImageUrl = response.image;
     if (rawImageUrl && rawImageUrl.startsWith("https//")) {
       rawImageUrl = rawImageUrl.replace("https//", "https://");
     }
-    console.log("Raw Image URL:", rawImageUrl); // Debugging
+    console.log("Raw Image URL:", rawImageUrl); 
 
-    profileImg.src = rawImageUrl || "assets/images/ava3.webp";
+    profileImg.src = rawImageUrl || "assets/images/ja.jpeg";
 
   
         // Update Profile Information in the card
@@ -205,7 +206,6 @@ var UserService = {
 editProfile: function () {
   const form = document.getElementById("edit_profile_form");
   const formData = new FormData(form);
-
 
   const data = {
     username: formData.get("edit_username"),
@@ -265,7 +265,7 @@ updateDashboardLinkBasedOnRole() {
   if (user && user.role_id === 2) {
     dashboardLink.setAttribute("href", "#admin_dashboard");
     dashboardLink.innerHTML = `
-      <div><i class="fas fa-user-shield fa-lg mb-1" style="color: #F1E9CF;"></i></div>
+      <div><i class="fas fa-user-shield fa-lg mb-1" style="color:rgb(255, 255, 255);"></i></div>
       Admin Dashboard
     `;
   } else {

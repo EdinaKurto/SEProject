@@ -1,5 +1,4 @@
 <?php
- 
  require_once __DIR__ . "/../dao/ProductViewDao.php";
  
  class ProductViewService{
@@ -23,4 +22,4 @@
 
          return $this->productViewDao->getUserProductViews($user_id);
      }
- }
+}

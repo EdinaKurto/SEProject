@@ -42,3 +42,20 @@ class Config
         return isset($_ENV[$name]) && trim($_ENV[$name]) != "" ? $_ENV[$name] : $default;
     }
 }
+
+// Simple DB connection test
+if (php_sapi_name() === 'cli' || isset($_GET['test_db'])) {
+    $mysqli = @new mysqli(
+        Config::DB_HOST(),
+        Config::DB_USER(),
+        Config::DB_PASSWORD(),
+        Config::DB_NAME(),
+        Config::DB_PORT()
+    );
+    if ($mysqli->connect_errno) {
+        echo "Database connection failed: " . $mysqli->connect_error;
+    } else {
+        echo "Database connection successful!";
+        $mysqli->close();
+    }
+}

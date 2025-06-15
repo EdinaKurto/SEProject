@@ -91,6 +91,4 @@ public function get_order_statuses()
     public function get_status_by_id($status_id) {
         return $this->orderStatusDao->get_status_by_id($status_id);
     }
-
-
 }

@@ -3,7 +3,7 @@ var OrderService = {
 
   getAllOrders: function () {
     RestClient.get("order/statuses", function (statuses) {
-      OrderService.statusList = statuses; // cache
+      OrderService.statusList = statuses; 
 
       RestClient.get("order/all_orders", function (data) {
         // Round total_price to 2 decimals for each order
@@ -94,7 +94,7 @@ var OrderService = {
     return;
   }
 
-  Utils.block_ui("body"); // You can change this selector to match your UI
+  Utils.block_ui("body");
 
   RestClient.delete(
     `order/remove/${orderId}`,
@@ -165,9 +165,8 @@ checkout: function (paymentMethod) {
   RestClient.post("order/add", payload,
     function (response) {
       toastr.success("Purchase successful!");
-      OrderService.clearCart(); // if you have this function
-      // optionally redirect or refresh cart page
-      OrderService.getUserOrders(); // or custom success handler
+      OrderService.clearCart();
+      OrderService.getUserOrders(); 
       OrderService.clearCheckoutForm();
     },
     function (error) {
@@ -183,7 +182,7 @@ clearCart() {
 
   RestClient.delete("cart/clear", {},
     function (response) {
-      // Backend success → now clear cart UI
+      // Backend success  now clear cart UI
       localStorage.removeItem("cart");
       document.getElementById("cartItems").innerHTML = "";
       document.getElementById("cartItemCount").innerText = "0 items";
@@ -254,9 +253,4 @@ initCheckoutFormValidation: function () {
     }
   });
 },
-
-
-
-
-
 };

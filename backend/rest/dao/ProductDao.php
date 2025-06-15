@@ -1,12 +1,10 @@
 <?php
 require_once __DIR__ . "/BaseDao.php";
-
 class ProductDao extends BaseDao {
     public function __construct()
     {
         parent::__construct('product');
     }
-
     public function add_product($product)
     {
         return $this->insert('product', $product);
@@ -38,8 +36,7 @@ class ProductDao extends BaseDao {
             FROM product p
             JOIN category c ON p.category_id = c.id
             WHERE 1=1
-        ";
-    
+        ";    
         $params = [];
     
         // Filter by name (search)
@@ -48,7 +45,6 @@ class ProductDao extends BaseDao {
             $params['search'] = "%$search%";
         }
     
-        // Filter by price range
         if ($min_price !== null && $min_price !== '') {
             $query .= " AND p.price_each >= :min_price";
             $params['min_price'] = $min_price;
@@ -58,7 +54,6 @@ class ProductDao extends BaseDao {
             $params['max_price'] = $max_price;
         }
     
-        // Filter by category
         if ($category_id !== null && $category_id !== '') {
             if (str_contains($category_id, ',')) {
                 $ids = array_map('intval', explode(',', $category_id));
@@ -75,7 +70,6 @@ class ProductDao extends BaseDao {
             }
         }
     
-        // Sorting
         if ($sort === 'price_asc') {
             $query .= " ORDER BY p.price_each ASC";
         } elseif ($sort === 'price_desc') {
@@ -85,7 +79,6 @@ class ProductDao extends BaseDao {
         return $this->query($query, $params);
     }
     
-
 
     public function update_product($product_id, $product) {
         return $this->update("product", $product_id, $product);
@@ -101,14 +94,7 @@ class ProductDao extends BaseDao {
     ]);
 }
 
-
-
 public function delete_product_image($image_id) {
     return $this->delete("product_image", $image_id, "id");
-
-
 }
-
-
-
 }

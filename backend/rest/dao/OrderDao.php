@@ -1,12 +1,10 @@
 <?php
 require_once __DIR__ . "/BaseDao.php";
-
 class OrderDao extends BaseDao {
     public function __construct()
     {
         parent::__construct('order');
     }
-
     public function add_order($order, $user_id)
     {
         $order_data = [
@@ -18,12 +16,11 @@ class OrderDao extends BaseDao {
             "country"      => $order["country"],
             "phone_number" => $order["phone_number"],
             "date"         => date("Y-m-d H:i:s"),
-            "status_id"    => 2 // Default status (e.g., "pending")
+            "status_id"    => 2
         ];
 
         return $this->insert('`order`', $order_data);
     }
-
 
     public function get_orders_by_user($user_id) {
         $query = "
@@ -66,9 +63,6 @@ class OrderDao extends BaseDao {
     return $this->query($query, []);
 }
 
-
-
-
     public function count_pending_orders($user_id) {
         $query = "
             SELECT COUNT(*) AS pending_order_count
@@ -108,8 +102,7 @@ class OrderDao extends BaseDao {
     
         $result = $this->query($query, $params);
         return $result[0]['total_order_count'];
-    }   
-    
+    }    
     public function update_order_status($order_id, $new_status_id) {
         return $this->query_unique(
             "UPDATE `order` SET status_id = :status_id WHERE id = :order_id", 
@@ -119,7 +112,6 @@ class OrderDao extends BaseDao {
             ]
         );
     }          
-
     public function delete_order($order_id) {
         return $this->query_unique("DELETE FROM `order` WHERE id = :order_id", ["order_id" => $order_id]);
     }    

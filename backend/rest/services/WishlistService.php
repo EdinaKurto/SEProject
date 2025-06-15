@@ -50,7 +50,6 @@ public function add_to_wishlist($user_id, $product_id, $quantity = 1)
         return $wishlist;
     }
 
-
     public function clear_wishlist($user_id)
     {
         if (empty($user_id)) return "Server error";

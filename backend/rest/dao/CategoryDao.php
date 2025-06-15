@@ -1,13 +1,10 @@
 <?php
 require_once __DIR__ . "/BaseDao.php";
-
 class CategoryDao extends BaseDao {
     public function __construct()
     {
         parent::__construct('category');
     }
-
-
     public function getCategories() {
         $query = "
             SELECT 
@@ -28,11 +25,4 @@ class CategoryDao extends BaseDao {
     public function get_category_by_id($id) {
     return $this->query_unique("SELECT * FROM category WHERE id = :id", ["id" => $id]);
 }
-
-    
-
-
-
-
-
 }

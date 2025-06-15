@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/BaseDao.php";
-
 class WishlistDao extends BaseDao {
     public function __construct()
     {
@@ -25,7 +24,6 @@ public function add_to_wishlist($user_id, $product_id, $quantity = 1)
         ]);
     }
 }
-
 
     public function remove_from_wishlist($user_id, $product_id)
     {
@@ -78,7 +76,6 @@ public function add_to_wishlist($user_id, $product_id, $quantity = 1)
         }
     
         $query .= " ORDER BY $sort_by $sort_order";
-    
         return $this->query($query, $params);
     }
 

@@ -1,10 +1,8 @@
 <?php
-
 require_once __DIR__ . "/../dao/ProductDao.php";
 
 class ProductService {
     private $productDao;
-
     public function __construct() {
         $this->productDao = new productDao();
     }
@@ -18,7 +16,7 @@ class ProductService {
 
     public function get_product_by_id($id) {
     $product = $this->productDao->get_product_by_id($id);
-    $product['images'] = $this->productDao->get_images_by_product_id($id); // ← OVDJE DODAJ SLIKE
+    $product['images'] = $this->productDao->get_images_by_product_id($id);
     return $product;
 }
 
@@ -64,7 +62,4 @@ public function get_images_by_product_id($product_id) {
 public function delete_product_image($image_id) {
     return $this->productDao->delete_product_image($image_id);
 }
-
-
-
 }

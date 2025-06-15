@@ -56,8 +56,6 @@ public function get_filtered_cart($user_id, $search = "", $sort_by = "name", $so
 
     return $cart;
 }
-
-
     public function clear_cart($user_id)
     {
         if (empty($user_id)) return "Server error";

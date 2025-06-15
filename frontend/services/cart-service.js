@@ -1,6 +1,5 @@
 var CartService = {
   data: [],
-
   getCart: function () {
     RestClient.get("cart", function (cartItems) {
       CartService.data = cartItems;
@@ -34,11 +33,11 @@ items.forEach(item => {
 
   console.log("Raw Image URL:", rawImageUrl); // Debugging
 
-  const imageUrl = rawImageUrl || 'assets/images/earl_grey_tea.jpg';
+  const imageUrl = rawImageUrl || 'assets/images/Red_Perfume.jpeg';
 
     const html = `
       <div class="card mb-3">
-        <div class="card-body" style="background-color: #beaf9e;">
+        <div class="card-body" style="background-color:rgb(255, 255, 255);">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-row align-items-center">
               <div>
@@ -168,7 +167,6 @@ items.forEach(item => {
     quantity: parseInt(quantity)
   }, function () {
     toastr.success("Item added to cart.");
-/*     CartService.getCart();  */// Optional: refresh cart UI immediately
   }, function () {
     toastr.error("Failed to add item to cart.");
   });
@@ -181,8 +179,6 @@ addToCartFromLocal: function (quantity = 1) {
     toastr.error("Product ID not found in localStorage.");
     return;
   }
-
   this.addToCart(productId, quantity);
 }
-
 };

@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/BaseDao.php";
-
 class CartDao extends BaseDao {
     public function __construct()
     {
@@ -15,18 +14,15 @@ public function add_to_cart($user_id, $product_id, $quantity = 1)
     );
 
     if ($cart_item) {
-        // Dodaj na postojeću količinu
         $new_quantity = $cart_item['quantity'] + $quantity;
         $this->update_quantity($user_id, $product_id, $new_quantity);
     } else {
-        // Unesi novi proizvod u korpu
         $this->insert("cart", [
             "user_id" => $user_id,
             "product_id" => $product_id,
             "quantity" => $quantity
         ]);
     }
-
     return ["status" => "success", "message" => "Item added to cart"];
 }
 
@@ -86,11 +82,6 @@ public function add_to_cart($user_id, $product_id, $quantity = 1)
         return $this->query($query, $params);
     }
 
-
-
-
-
-
     public function clear_cart($user_id)
         {
             $this->query("DELETE FROM cart WHERE user_id = :user_id", ["user_id" => $user_id]);
@@ -114,6 +105,4 @@ public function add_to_cart($user_id, $product_id, $quantity = 1)
                 "total_count" => $result[0]['total_count'] ?? 0
             ];
         }    
-
-
 }

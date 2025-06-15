@@ -1,5 +1,4 @@
 <?php
-
 class MessageHandler {
     public static function handleServiceResponse($result, $successMessage = null) {
         if ($result === "Server error") {

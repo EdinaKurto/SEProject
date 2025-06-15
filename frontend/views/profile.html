@@ -1,13 +1,11 @@
-<section id="profile" style="background: linear-gradient(to right, #9c8f7f, #918577, #ad9b82, #ac9b84);">
+<section id="profile" style="background: linear-gradient(135deg, #ffffff, #b3afb6);">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-4">
-                <div class="card mb-4" style="border: 2px solid #53342A;">
-
+                <div class="card mb-4" style="border: 2px solid #6e0e9b;">
                     <div class="card-body text-center">
-                        <img src= "assets/images/ava3.webp"
-                            class="rounded-circle img-fluid profile-img" style="width: 150px;">
-                        <h5 class="my-3">John Smith</h5>
+                        <img src= "assets/images/ja.jpeg" class="rounded-circle img-fluid profile-img" style="width: 150px;">
+                        <h5 class="my-3">John Doe</h5>
                         <p class="text-muted mb-4">Role - Customer</p>
                         <div class="d-flex justify-content-center mb-2">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal">Edit my Profile</button>
@@ -19,7 +17,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="card mb-4" style="border: 2px solid #53342A;">
+                <div class="card mb-4" style="border: 2px solid #6e0e9b;">
 
 
                     <div class="card-body">
@@ -55,9 +53,9 @@
         <!-- Recent Orders -->
         <div class="row mb-4">
             <div class="col-lg-12">
-                <div class="card mb-4" style="border: 2px solid #53342A; ">
+                <div class="card mb-4" style="border: 2px solid #6e0e9b; ">
 
-                    <div class="card-header" style="background-color: #53342A; color: white;">
+                    <div class="card-header" style="background-color: #6e0e9b; color: white;">
 
                         <h5 class="mb-0">Recent Purchases</h5>
                     </div>
@@ -96,10 +94,7 @@
           <form id="edit_profile_form">
             <div class="row">
                 <div class="mb-4">
-                  <div class="mb-4 d-flex justify-content-center">
-                      <img id="selectedImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-                      alt="Picture placeholder" style="width: 300px;" />
-                  </div>
+                  <div class="mb-4 d-flex justify-content-center"><img id="selectedImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"alt="Picture placeholder" style="width: 300px;"/></div>
                   <div class="d-flex justify-content-center">
                       <div data-mdb-ripple-init class="btn btn-sm btn-success">
                           <label class="form-label text-white m-1" for="profile_picture">Choose file</label>
@@ -114,38 +109,37 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input name="edit_username" type="text" class="form-control form-control-md" id="edit_username" value="Heeeena">
+                  <input name="edit_username" type="text" class="form-control form-control-md" id="edit_username" value="Edinaaa">
                 </div>
               </div>
   
               <!-- Birthday input -->
               <div class="mb-3 col-6">
                 <label class="form-label" for="edit_date_of_birth">Date of Birth</label>
-                <input name="edit_date_of_birth" type="date" id="edit_date_of_birth" class="form-control form-control-md" value="2003-01-27" />
+                <input name="edit_date_of_birth" type="date" id="edit_date_of_birth" class="form-control form-control-md" value="2002-8-14" />
               </div>
             </div>
   
             <!-- Fullname input -->
             <div class="mb-3">
               <label class="form-label" for="edit_name">Full Name</label>
-              <input name="edit_name" id="edit_name" class="form-control form-control-md" value="Hena Potogija" />
+              <input name="edit_name" id="edit_name" class="form-control form-control-md" value="Edina Kurto" />
             </div>
   
             <!-- Email input -->
             <div class="mb-3">
               <label class="form-label" for="edit_email">Email address</label>
-              <input name="edit_email" type="email" id="edit_email" class="form-control form-control-md" value="hena.potogija@stu.ibu.edu.ba" />
+              <input name="edit_email" type="email" id="edit_email" class="form-control form-control-md" value="edina.kurto@stu.ibu.edu.ba" />
             </div>
   
             <!-- Address input -->
             <div class="mb-3">
               <label class="form-label" for="edit_address">Address</label>
-              <input name="edit_address" id="edit_address" class="form-control form-control-md" value="Bay Area, San Francisco, CA" />
+              <input name="edit_address" id="edit_address" class="form-control form-control-md" value="Osmana Nakaša 15, BiH" />
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="outline-color: #4F1F14;">Close</button> 
-                <button type="submit" id = "save-btn" class="btn" style="background-color: #53342A; color: #FFFFFF;">Save changes</button>
-            
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="outline-color: #24144f;">Close</button> 
+                <button type="submit" id = "save-btn" class="btn" style="background-color: #6e0e9b; color: #FFFFFF;">Save changes</button>
         </div>
        </form>
       </div>
@@ -177,7 +171,6 @@
 
 </script>
 <script>
-  // Unblock UI whenever the edit modal is hidden (closed)
   $('#edit_modal').on('hidden.bs.modal', function () {
     Utils.unblock_ui("#profile");
   });

@@ -3,37 +3,29 @@
 <div class="container mt-5" >
     <div class="row">
         <!-- Product Images -->
-<div class="col-md-6 mb-4">
-    <!-- Main Image -->
-    <img src="" alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage" style="width: 100%; max-width: 400px; display: block; margin-left: auto; margin-right: auto;">
-    
-    <!-- Thumbnails row -->
-    <div class="thumbnail-row mx-auto" style="max-width: 100%;">
-        <div class="d-flex justify-content-between" style="display: flex; gap: 10px;">
-            <img src="" alt="Thumbnail 1" class="thumbnail rounded active"
-                onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
-            <img src="" alt="Thumbnail 2" class="thumbnail rounded active"
-                onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
-            <img src="" alt="Thumbnail 3" class="thumbnail rounded"
-                onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
+        <div class="col-md-6 mb-4">
+            <!-- Main Image -->
+            <img src="" alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage" style="width: 100%; max-width: 400px; display: block; margin-left: auto; margin-right: auto;">
+            
+            <!-- Thumbnails row -->
+            <div class="thumbnail-row mx-auto" style="max-width: 100%;">
+                <div class="d-flex justify-content-between" style="display: flex; gap: 10px;">
+                    <img src="" alt="Thumbnail 1" class="thumbnail rounded active"
+                        onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
+                    <img src="" alt="Thumbnail 2" class="thumbnail rounded active"
+                        onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
+                    <img src="" alt="Thumbnail 3" class="thumbnail rounded"
+                        onclick="changeImage(event, this.src)" style="width: 32%; height: 120px; object-fit: cover; cursor: pointer;">
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-
-
 
         <!-- Product Details -->
         <div class="col-md-6">
-            <h2 class="mb-3">Chamomile Tea</h2>
-            <div class="mb-3">
-                <span class="h4 me-2">$14.99</span>
-            </div>
-
-            <p class="mb-4">Experience the best organic Chamomile Tea, from untouched Bosnian valleys.
-                This tea will leave you refreshed, peaceful and ready for the day.
-            </p>
-            
+            <h2 class="mb-3">Mystic Dawn</h2>
+            <div class="mb-3"><span class="h4 me-2">$54.99</span></div>
+            <p class="mb-4">Experience the best organic Mystic Dawn, from untouched Bosnian valleys. This perfume will leave you refreshed, peaceful and ready for the day.</p>
+        
             <div class="mb-4">
                 <label for="quantity" class="form-label">Quantity:</label>
                 <input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;">
@@ -50,22 +42,13 @@
             </div>
         </div>
     </div>
-
     <hr class="my-5">
 
-<h3 class="text-center mb-4" style="color: #4F1F14;">You might also like</h3>
-
-<div class="row justify-content-center">
- 
-
-<div id="recommendations-row" class="row justify-content-center">
-  <!-- Product Card 1 -->
-  
-</div>
-
-
-
-
+    <h3 class="text-center mb-4" style="color: #6e0e9b;">You might also like</h3>
+    <div class="row justify-content-center">
+    <div id="recommendations-row" class="row justify-content-center">
+    
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -76,6 +59,3 @@
             event.target.classList.add('active');
         }
 </script>
-
-<!--  -->
-

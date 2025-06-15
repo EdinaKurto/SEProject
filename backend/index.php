@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // You can restrict this to your frontend URL if needed
+header("Access-Control-Allow-Origin: *"); 
 header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, Authentication");
 header("Access-Control-Allow-Credentials: true");
@@ -40,11 +40,4 @@ require 'rest/routes/product_routes.php';
 require 'rest/routes/product_view_routes.php';
 require 'rest/routes/order_routes.php';
 require 'rest/routes/item_in_order_routes.php';
-
-
-// // Test route to verify FlightPHP is working
-// Flight::route('GET /', function () {
-//     echo "FlightPHP is working!";
-// });
-
 Flight::start();

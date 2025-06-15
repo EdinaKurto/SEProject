@@ -276,8 +276,4 @@ updateDashboardLinkBasedOnRole() {
     `;
   }
 }
-
-
-
-
 };

@@ -1,0 +1,97 @@
+<!-- signup.html (for SPA partial loading) -->
+<section class="h-100" style="background-color: #fff;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-11 col-lg-10 col-xl-9">
+        <div class="card register-card">
+          <div class="row g-0">
+            <div class="col-md-5 d-none d-md-block">
+              <img src="frontend/assets/images/Perfume/Purple_Perfume1.jpeg" alt="register image" class="register-image" />
+            </div>
+            <div class="col-md-7 d-flex align-items-center">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                <form id="signupForm">
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="register-username" class="form-control form-control-lg" required />
+                    <label class="form-label" for="register-username">Full Name</label>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="register-email" class="form-control form-control-lg" oninput="validateEmail()" required />
+                    <label class="form-label" for="register-email">E-mail</label>
+                    <div id="emailError" style="display:none; color: #AE2AA4; border-color: #AE2AA4;">Please enter a valid email address.</div>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="register-password" class="form-control form-control-lg" oninput="validatePassword()" minlength="6" required />
+                    <label class="form-label" for="register-password">Password</label>
+                    <div id="passwordError" style="display:none; color: #AE2AA4; border-color: #AE2AA4;">Password is too short.</div>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="register-confirm-password" class="form-control form-control-lg" required />
+                    <label class="form-label" for="register-confirm-password">Confirm password</label>
+                  </div>
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                    <label class="form-check-label" for="form2Example3g">
+                      I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                    </label>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block" type="submit" style="background-color: #AE2AA4; border-color: #AE2AA4; color: white;">Sign Up</button>
+                  </div>
+                  <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#login" class="fw-bold text-body"><u>Sign in here</u></a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+
+.register-card {
+  min-height: 600px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.register-image {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: block;
+}
+
+@media (max-width: 767.98px) {
+  .register-card {
+    min-height: unset;
+  }
+  .register-image {
+    display: none;
+  }
+}
+</style>
+<script>
+  console.log("signup.html loaded");
+  document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var entity = {
+      "register-username": document.getElementById('register-username').value,
+      "register-email": document.getElementById('register-email').value,
+      "register-password": document.getElementById('register-password').value
+    };
+    console.log("Signup form submitted", entity);
+    if (typeof UserService === 'undefined') {
+      console.error("UserService is not defined!");
+    } else {
+      UserService.register(entity);
+    }
+  });
+  
+</script>

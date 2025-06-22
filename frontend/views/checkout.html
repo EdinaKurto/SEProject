@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/SEProject/frontend/assets/css/style.css">
+    <style>
+        .card-img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            margin: 10px auto;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Checkout</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Profile Information</h2>
+                <form id="checkoutForm" onsubmit="return validatePaymentInfo()">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" value="John Doe" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" value="johndoe@example.com" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" class="form-control" id="address" name="address" value="123 Main St" readonly>
+                    </div>
+                    <h2>Payment Information</h2>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" required>
+                    </div>
+                    <button type="submit" class="btn" style="background-color: rgba(84, 35, 153, 0.631); border-color: rgba(84, 35, 153, 0.631); color: white;">Submit Payment</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Order Summary</h2>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="frontend/assets/images/parfem.png" class="card-img" alt="Mystic Dawn">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Mystic Dawn</h5>
+                                <p class="card-text">Experience the serene and enchanting scent of Mystic Dawn.</p>
+                                <p class="card-text"><strong>Price: $50.00</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="frontend/assets/images/parfem.png" class="card-img" alt="Eternal Flame">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Eternal Flame</h5>
+                                <p class="card-text">Ignite your senses with the passionate scent of Eternal Flame.</p>
+                                <p class="card-text"><strong>Price: $60.00</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="frontend/assets/images/parfem.png" class="card-img" alt="Ocean Breeze">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ocean Breeze</h5>
+                                <p class="card-text">Feel the refreshing and invigorating scent of Ocean Breeze.</p>
+                                <p class="card-text"><strong>Price: $70.00</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="frontend/assets/images/parfem.png" class="card-img" alt="Midnight Whisper">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Midnight Whisper</h5>
+                                <p class="card-text">Embrace the mysterious and alluring scent of Midnight Whisper.</p>
+                                <p class="card-text"><strong>Price: $80.00</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Total: $260.00</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validatePaymentInfo() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (!/^\d{16}$/.test(cardNumber)) {
+                alert('Invalid card number. Please enter a 16-digit card number.');
+                return false;
+            }
+
+            if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+                alert('Invalid expiry date. Please enter in MM/YY format.');
+                return false;
+            }
+
+            if (!/^\d{3}$/.test(cvv)) {
+                alert('Invalid CVV. Please enter a 3-digit CVV.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <script src="/SEProject/frontend/utils/constants.js"></script>
+    <script src="/SEProject/frontend/utils/rest-client.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .card-img {
+            margin: 10px auto;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</body>
+</html>

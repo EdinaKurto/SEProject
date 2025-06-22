@@ -1,0 +1,92 @@
+{
+  "paths": {
+    "/profile": {
+      "put": {
+        "summary": "Update user profile",
+        "description": "Allows a user to update their profile information.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "email": { "type": "string" },
+                  "address": { "type": "string" }
+                },
+                "required": ["username", "email", "address"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkout": {
+      "post": {
+        "summary": "Create an order during checkout",
+        "description": "Processes the checkout and creates a new order.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "order_address": { "type": "string" },
+                  "order_city": { "type": "string" },
+                  "order_country": { "type": "string" },
+                  "order_phone": { "type": "string" },
+                  "total_price": { "type": "number" },
+                  "cart_items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "product_id": { "type": "integer" },
+                        "quantity": { "type": "integer" },
+                        "price": { "type": "number" }
+                      }
+                    }
+                  }
+                },
+                "required": ["order_address", "order_city", "order_country", "order_phone", "total_price", "cart_items"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "order_id": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
